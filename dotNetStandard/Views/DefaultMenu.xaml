@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Atomus.Page.Menu.ViewModel"
+             x:Class="Atomus.Page.Menu.DefaultMenu"
+             Title="Master"
+             >
+
+    <!--<ContentPage.BindingContext>
+        <local:DefaultMenuViewModel />
+    </ContentPage.BindingContext>-->
+
+    <StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="1" Grid.Row="1" 
+                   Text="{Binding AppName}"
+                   FontSize="Large"/>
+            <Label Grid.Column="1" Grid.Row="2" 
+                   Text="{Binding NickName, StringFormat='Name : {0}'}"/>
+            <Label Grid.Column="1" Grid.Row="3" 
+                   FontSize="Micro"
+                   Text="{Binding Info}" />
+        </Grid>
+        
+        <ListView SeparatorVisibility="None" HasUnevenRows="true"
+                  ItemsSource="{Binding MenuItems}" BackgroundColor="{Binding BackgroundColor}"
+                  ItemSelected="ListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                            <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{Binding Title}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
